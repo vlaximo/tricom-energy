@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Servicios – TRICOM ENERGY</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+    :root {
+      --color-primary: #F15A29;
+      --color-gray: #C0C0C0;
+      --color-dark: #111827;
+      --color-text: #1F2933;
+      --color-soft: #6B7280;
+      --color-bg-soft: #FFF5EF;
+    }
+
+    body {
+      font-family: system-ui, sans-serif;
+      margin: 0;
+      background: #fff;
+      color: var(--color-text);
+    }
+
+    a { text-decoration: none; color: inherit; }
+
+    .container {
+      max-width: 1120px;
+      margin: auto;
+      padding: 1.5rem;
+    }
+
+    /* HEADER */
+    header {
+      background: #fff;
+      border-bottom: 1px solid #eee;
+      padding: 0.8rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-links a {
+      margin-left: 1rem;
+      color: var(--color-soft);
+      font-weight: 500;
+      padding: 0.4rem 0.6rem;
+      border-radius: 10px;
+    }
+
+    .nav-links a:hover {
+      background: rgba(241,90,41,0.08);
+      color: var(--color-primary);
+    }
+
+    .nav-links .active {
+      color: var(--color-primary);
+      font-weight: 700;
+    }
+
+    /* HERO */
+    .hero {
+      width: 100%;
+      height: 380px;
+      background: url("servicio1.png") center/cover no-repeat;
+      display: flex;
+      align-items: flex-end;
+      border-bottom: 4px solid var(--color-primary);
+    }
+
+    .hero-title {
+      background: rgba(0,0,0,0.45);
+      width: 100%;
+      padding: 2rem 1.5rem;
+      text-align: center;
+      color: #fff;
+      font-size: 2.4rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    /* SERVICES GRID */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2.5rem;
+    }
+
+    .service-card {
+      border: 1px solid #e5e7eb;
+      border-radius: 14px;
+      padding: 1.4rem;
+      background: #fff;
+      transition: 0.2s;
+    }
+
+    .service-card:hover {
+      border-color: var(--color-primary);
+      transform: translateY(-4px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.07);
+    }
+
+    .service-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: #FFF3EC;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 24px;
+      color: var(--color-primary);
+      margin-bottom: 1rem;
+    }
+
+    .service-card h3 {
+      font-size: 1.1rem;
+      margin-bottom: 0.4rem;
+      color: var(--color-dark);
+    }
+
+    .service-card p {
+      font-size: 0.9rem;
+      color: var(--color-soft);
+      line-height: 1.5;
+    }
+
+    /* CTA FINAL */
+    .cta {
+      margin-top: 4rem;
+      padding: 2.5rem;
+      background: #FFF5EF;
+      border-radius: 16px;
+      text-align: center;
+    }
+
+    .cta h2 {
+      font-size: 1.8rem;
+      margin-bottom: 0.5rem;
+      color: var(--color-dark);
+    }
+
+    .cta p {
+      font-size: 1rem;
+      color: var(--color-soft);
+      max-width: 600px;
+      margin: auto;
+      margin-bottom: 1.3rem;
+    }
+
+    .cta a {
+      display: inline-block;
+      background: var(--color-primary);
+      color: #fff;
+      padding: 0.8rem 1.5rem;
+      border-radius: 10px;
+      font-weight: 600;
+    }
+
+    footer {
+      margin-top: 3rem;
+      padding: 1rem 0;
+      background: #fafafa;
+      text-align: center;
+      color: var(--color-soft);
+      font-size: 0.85rem;
+    }
+
+/* ============================
+   BOTÓN FLOTANTE WHATSAPP
+============================ */
+.whatsapp-float {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #25D366;
+  color: #fff;
+  padding: 12px 14px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  box-shadow: 0 12px 24px rgba(0,0,0,0.18);
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.whatsapp-float:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.05);
+}
+
+.whatsapp-icon {
+  width: 22px;
+  height: 22px;
+  display: inline-block;
+}
+
+.whatsapp-text {
+  white-space: nowrap;
+}
+
+/* Versión mini en móvil */
+@media (max-width: 600px) {
+  .whatsapp-float {
+    padding: 12px;
+    border-radius: 50%;
+  }
+  .whatsapp-text {
+    display: none;
+  }
+}
+
+</style>
+</head>
+
+<!-- BOTÓN FLOTANTE WHATSAPP -->
+<a class="whatsapp-float"
+   href="https://wa.me/573012882282?text=Hola%20TRICOM%20ENERGY,%20quiero%20asesor%C3%ADa%20para%20un%20sistema%20solar."
+   target="_blank"
+   rel="noopener">
+   
+  <!-- ícono whatsapp en SVG (no necesita archivos extra) -->
+  <svg class="whatsapp-icon" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+    <path fill="white" d="M19.11 17.49c-.27-.14-1.6-.79-1.85-.88-.25-.09-.43-.14-.61.14-.18.27-.7.88-.86 1.06-.16.18-.32.2-.59.07-.27-.14-1.15-.42-2.19-1.35-.81-.72-1.36-1.61-1.52-1.88-.16-.27-.02-.41.12-.55.12-.12.27-.32.41-.48.14-.16.18-.27.27-.45.09-.18.05-.34-.02-.48-.07-.14-.61-1.47-.84-2.01-.22-.53-.45-.46-.61-.47h-.52c-.18 0-.48.07-.73.34-.25.27-.95.93-.95 2.27 0 1.34.98 2.64 1.12 2.82.14.18 1.93 2.95 4.68 4.13.65.28 1.15.45 1.54.57.65.21 1.24.18 1.7.11.52-.08 1.6-.65 1.83-1.28.23-.63.23-1.17.16-1.28-.07-.11-.25-.18-.52-.32z"/>
+    <path fill="white" d="M26.67 5.33A13.24 13.24 0 0 0 16.01 1C8.83 1 3 6.82 3 13.99c0 2.22.58 4.39 1.68 6.3L3 31l10.9-1.67a12.93 12.93 0 0 0 6.11 1.56h.01c7.18 0 13-5.82 13-12.99 0-3.47-1.35-6.74-3.35-9.57zM20.01 28.6h-.01a10.8 10.8 0 0 1-5.52-1.53l-.39-.23-6.48.99 1.46-6.3-.25-.41a10.89 10.89 0 0 1-1.66-5.83C7.16 8.2 11.71 3.66 17.1 3.66c2.9 0 5.62 1.13 7.67 3.18a10.78 10.78 0 0 1 3.18 7.67c0 5.39-4.55 9.94-9.94 9.94z"/>
+  </svg>
+
+  <span class="whatsapp-text">WhatsApp</span>
+</a>
+
+<body>
+
+<header>
+  <div class="container nav">
+    <img src="logo tricom energy.png" style="height:50px;">
+    <div class="nav-links">
+      <a href="index.html">Inicio</a>
+      <a class="active" href="servicios.html">Servicios</a>
+      <a href="productos.html">Productos</a>
+      <a href="calculadora.html">Calculadora</a>
+      <a href="nosotros.html">Nosotros</a>
+      <a href="contacto.html">Contacto</a>
+    </div>
+  </div>
+</header>
+
+<!-- HERO CON IMAGEN ACTUALIZADA -->
+<section class="hero">
+  <div class="hero-title">Nuestros Servicios</div>
+</section>
+
+<div class="container">
+
+  <div class="services-grid">
+
+    <div class="service-card">
+      <div class="service-icon">🔌</div>
+      <h3>Sistemas On Grid (Sin batería)</h3>
+      <p>Conéctate directamente a la red eléctrica y reduce hasta un 80% tu factura mensual. Ideal para hogares y comercios.</p>
+    </div>
+
+    <div class="service-card">
+      <div class="service-icon">🔋</div>
+      <h3>Sistemas Off Grid (Con batería)</h3>
+      <p>Sistemas autónomos ideales para zonas rurales, fincas y proyectos que requieren independencia energética y respaldo permanente.</p>
+    </div>
+
+    <div class="service-card">
+      <div class="service-icon">⚡</div>
+      <h3>Sistemas Híbridos</h3>
+      <p>La combinación perfecta entre conexión a red y baterías. Garantiza energía incluso en cortes eléctricos prolongados.</p>
+    </div>
+
+    <div class="service-card">
+      <div class="service-icon">📊</div>
+      <h3>Estudios Energéticos</h3>
+      <p>Evaluamos tu consumo eléctrico y diseñamos un sistema solar óptimo según la demanda real de tu hogar o empresa.</p>
+    </div>
+
+    <div class="service-card">
+      <div class="service-icon">🛠️</div>
+      <h3>Mantenimiento & Monitoreo</h3>
+      <p>Revisión, limpieza, pruebas eléctricas y monitoreo remoto para garantizar el máximo rendimiento de tu sistema fotovoltaico.</p>
+    </div>
+
+  </div>
+
+  <div class="cta">
+    <h2>¿Listo para ahorrar con energía solar?</h2>
+    <p>Contáctanos para recibir una propuesta personalizada según tus necesidades energéticas.</p>
+    <a href="index.html#formulario">Solicitar oferta</a>
+  </div>
+
+</div>
+
+<footer>
+  © 2025 TRICOM ENERGY — Soluciones solares de alta eficiencia.
+</footer>
+
+</body>
+</html>

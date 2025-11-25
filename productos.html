@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Productos – TRICOM ENERGY</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+    :root {
+      --color-primary: #F15A29;
+      --color-gray: #C0C0C0;
+      --color-dark: #111827;
+      --color-text: #1F2933;
+      --color-soft: #6B7280;
+      --color-bg-soft: #FFF5EF;
+    }
+
+    body {
+      font-family: system-ui, sans-serif;
+      margin: 0;
+      background: #fff;
+      color: var(--color-text);
+    }
+
+    a { text-decoration: none; color: inherit; }
+
+    .container {
+      max-width: 1120px;
+      margin: auto;
+      padding: 1.5rem;
+    }
+
+    /* HEADER */
+    header {
+      background: #fff;
+      border-bottom: 1px solid #eee;
+      padding: 0.8rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-links a {
+      margin-left: 1rem;
+      color: var(--color-soft);
+      font-weight: 500;
+      padding: 0.4rem 0.6rem;
+      border-radius: 10px;
+    }
+
+    .nav-links a:hover {
+      background: rgba(241,90,41,0.08);
+      color: var(--color-primary);
+    }
+
+    .nav-links .active {
+      color: var(--color-primary);
+      font-weight: 700;
+    }
+
+    /* HERO CON BANNER */
+    .hero {
+      width: 100%;
+      height: 380px;
+      background: url("producto1.png") center/cover no-repeat;
+      display: flex;
+      align-items: flex-end;
+      border-bottom: 4px solid var(--color-primary);
+    }
+
+    .hero-title {
+      background: rgba(0,0,0,0.45);
+      width: 100%;
+      padding: 2rem 1.5rem;
+      text-align: center;
+      color: #fff;
+      font-size: 2.4rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    .hero-sub {
+      background: rgba(0,0,0,0.45);
+      width: 100%;
+      text-align: center;
+      color: #f3f4f6;
+      font-size: 1rem;
+      padding-bottom: 1.3rem;
+    }
+
+    /* PRODUCT GRID */
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2.5rem;
+    }
+
+    .product-card {
+      border: 1px solid #e5e7eb;
+      border-radius: 14px;
+      background: #fff;
+      padding: 1.2rem;
+      transition: .2s;
+    }
+
+    .product-card:hover {
+      border-color: var(--color-primary);
+      transform: translateY(-4px);
+      box-shadow: 0 10px 22px rgba(0,0,0,0.06);
+    }
+
+    .product-img {
+      width: 100%;
+      height: 180px;
+      border-radius: 12px;
+      margin-bottom: 1rem;
+      object-fit: cover;
+      background: #f2f2f2;
+    }
+
+    .product-card h3 {
+      font-size: 1rem;
+      margin-bottom: 0.4rem;
+      color: var(--color-dark);
+    }
+
+    .product-card p {
+      font-size: 0.88rem;
+      color: var(--color-soft);
+      line-height: 1.4;
+      margin-bottom: 0.8rem;
+    }
+
+    .btn-buy {
+      background: var(--color-primary);
+      color: #fff;
+      padding: 0.65rem 1rem;
+      border-radius: 8px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      display: inline-block;
+    }
+
+    .btn-buy:hover {
+      filter: brightness(1.1);
+    }
+
+    /* CTA FINAL */
+    .cta {
+      margin-top: 3.5rem;
+      padding: 2.2rem;
+      background: var(--color-bg-soft);
+      border-radius: 16px;
+      text-align: center;
+    }
+
+    .cta h2 {
+      font-size: 1.7rem;
+      margin-bottom: 0.4rem;
+      color: var(--color-dark);
+    }
+
+    .cta p {
+      font-size: 1rem;
+      color: var(--color-soft);
+      max-width: 650px;
+      margin: auto;
+      margin-bottom: 1.2rem;
+    }
+
+    .cta a {
+      display: inline-block;
+      background: var(--color-primary);
+      color: #fff;
+      padding: 0.8rem 1.5rem;
+      border-radius: 10px;
+      font-weight: 700;
+    }
+
+    footer {
+      margin-top: 3rem;
+      padding: 1rem 0;
+      background: #fafafa;
+      text-align: center;
+      color: var(--color-soft);
+      font-size: 0.85rem;
+    }
+
+/* ============================
+   BOTÓN FLOTANTE WHATSAPP
+============================ */
+.whatsapp-float {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #25D366;
+  color: #fff;
+  padding: 12px 14px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  box-shadow: 0 12px 24px rgba(0,0,0,0.18);
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.whatsapp-float:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.05);
+}
+
+.whatsapp-icon {
+  width: 22px;
+  height: 22px;
+  display: inline-block;
+}
+
+.whatsapp-text {
+  white-space: nowrap;
+}
+
+/* Versión mini en móvil */
+@media (max-width: 600px) {
+  .whatsapp-float {
+    padding: 12px;
+    border-radius: 50%;
+  }
+  .whatsapp-text {
+    display: none;
+  }
+}
+
+</style>
+</head>
+
+<!-- BOTÓN FLOTANTE WHATSAPP -->
+<a class="whatsapp-float"
+   href="https://wa.me/573012882282?text=Hola%20TRICOM%20ENERGY,%20quiero%20asesor%C3%ADa%20para%20un%20sistema%20solar."
+   target="_blank"
+   rel="noopener">
+   
+  <!-- ícono whatsapp en SVG (no necesita archivos extra) -->
+  <svg class="whatsapp-icon" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+    <path fill="white" d="M19.11 17.49c-.27-.14-1.6-.79-1.85-.88-.25-.09-.43-.14-.61.14-.18.27-.7.88-.86 1.06-.16.18-.32.2-.59.07-.27-.14-1.15-.42-2.19-1.35-.81-.72-1.36-1.61-1.52-1.88-.16-.27-.02-.41.12-.55.12-.12.27-.32.41-.48.14-.16.18-.27.27-.45.09-.18.05-.34-.02-.48-.07-.14-.61-1.47-.84-2.01-.22-.53-.45-.46-.61-.47h-.52c-.18 0-.48.07-.73.34-.25.27-.95.93-.95 2.27 0 1.34.98 2.64 1.12 2.82.14.18 1.93 2.95 4.68 4.13.65.28 1.15.45 1.54.57.65.21 1.24.18 1.7.11.52-.08 1.6-.65 1.83-1.28.23-.63.23-1.17.16-1.28-.07-.11-.25-.18-.52-.32z"/>
+    <path fill="white" d="M26.67 5.33A13.24 13.24 0 0 0 16.01 1C8.83 1 3 6.82 3 13.99c0 2.22.58 4.39 1.68 6.3L3 31l10.9-1.67a12.93 12.93 0 0 0 6.11 1.56h.01c7.18 0 13-5.82 13-12.99 0-3.47-1.35-6.74-3.35-9.57zM20.01 28.6h-.01a10.8 10.8 0 0 1-5.52-1.53l-.39-.23-6.48.99 1.46-6.3-.25-.41a10.89 10.89 0 0 1-1.66-5.83C7.16 8.2 11.71 3.66 17.1 3.66c2.9 0 5.62 1.13 7.67 3.18a10.78 10.78 0 0 1 3.18 7.67c0 5.39-4.55 9.94-9.94 9.94z"/>
+  </svg>
+
+  <span class="whatsapp-text">WhatsApp</span>
+</a>
+
+<body>
+
+<header>
+  <div class="container nav">
+    <img src="logo tricom energy.png" style="height:50px;">
+    <div class="nav-links">
+      <a href="index.html">Inicio</a>
+      <a href="servicios.html">Servicios</a>
+      <a class="active" href="productos.html">Productos</a>
+      <a href="calculadora.html">Calculadora</a>
+      <a href="nosotros.html">Nosotros</a>
+      <a href="contacto.html">Contacto</a>
+    </div>
+  </div>
+</header>
+
+<!-- HERO CON BANNER -->
+<section class="hero">
+  <div style="width:100%;">
+    <div class="hero-title">Productos Fotovoltaicos</div>
+    <div class="hero-sub">Paneles, inversores, baterías y accesorios certificados para tu sistema solar.</div>
+  </div>
+</section>
+
+<div class="container">
+
+  <div class="products-grid">
+
+    <!-- PANEL SOLAR 620 -->
+    <div class="product-card">
+      <img src="paneles.jpg" alt="Panel Solar 620 Wp" class="product-img">
+      <h3>Panel Solar 620 Wp</h3>
+      <p>Alta eficiencia y rendimiento garantizado. Ideal para proyectos residenciales, comerciales e industriales.</p>
+      <a href="index.html#formulario" class="btn-buy">Solicitar precio</a>
+    </div>
+
+    <!-- INVERSORES HÍBRIDOS -->
+    <div class="product-card">
+      <img src="inversor.jpg" alt="Inversores Híbridos" class="product-img">
+      <h3>Inversores Híbridos</h3>
+      <p>Equipos versátiles compatibles con paneles y baterías. Optimizan el consumo y brindan respaldo en cortes eléctricos.</p>
+      <a href="index.html#formulario" class="btn-buy">Solicitar precio</a>
+    </div>
+
+    <!-- BATERÍAS LITIO -->
+    <div class="product-card">
+      <img src="bateria.jpg" alt="Baterías de litio" class="product-img">
+      <h3>Baterías de litio</h3>
+      <p>Soluciones de almacenamiento con larga vida útil, alta descarga y máxima seguridad para sistemas Off-Grid e Híbridos.</p>
+      <a href="index.html#formulario" class="btn-buy">Solicitar precio</a>
+    </div>
+
+    <!-- TRÁILER SOLAR -->
+    <div class="product-card">
+      <img src="trailer.jpeg" alt="Tráiler solar de vigilancia" class="product-img">
+      <h3>Tráiler solar de vigilancia</h3>
+      <p>Es una solución moderna y sostenible diseñada para brindar seguridad avanzada en cualquier entorno, sin depender de fuentes externas de energía.</p>
+      <a href="index.html#formulario" class="btn-buy">Solicitar precio</a>
+    </div>
+
+    <!-- HERRAJES Y CABLEADO -->
+    <div class="product-card">
+      <img src="herrajes.jpg" alt="Accesorios y cableado solar" class="product-img">
+      <h3>Accesorios y cableado solar</h3>
+      <p>Conectores MC4, breakers solares, cajas de protección, cable PV, herrajes y todo lo necesario para una instalación segura.</p>
+      <a href="index.html#formulario" class="btn-buy">Solicitar precio</a>
+    </div>
+
+  </div>
+
+  <div class="cta">
+    <h2>¿Necesitas un producto específico?</h2>
+    <p>Cuéntanos qué equipo estás buscando y te enviamos precio, ficha técnica y compatibilidad con tu sistema.</p>
+    <a href="index.html#formulario">Solicitar oferta</a>
+  </div>
+
+</div>
+
+<footer>
+  © 2025 TRICOM ENERGY — Equipos y soluciones solares certificadas.
+</footer>
+
+</body>
+</html>

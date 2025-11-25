@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TRICOM ENERGY – Energía solar para hogares y empresas</title>
+  <meta name="description" content="TRICOM ENERGY: instalación de paneles solares y venta de productos fotovoltaicos para hogares, comercios e industria en Colombia. Ahorra hasta el 80% en tu factura de energía.">
+
+  <style>
+    :root {
+      --color-primary: #F15A29;  /* Naranja TRICOM ENERGY */
+      --color-gray: #C0C0C0;     /* Gris claro */
+      --color-bg: #FFFFFF;
+      --color-text: #1F2933;
+      --color-text-soft: #6B7280;
+      --color-dark: #111827;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--color-bg);
+      color: var(--color-text);
+      line-height: 1.5;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* HEADER */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(255,255,255,0.96);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid #E5E7EB;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.9rem 0;
+      gap: 1rem;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      font-size: 0.95rem;
+    }
+
+    .nav-links a {
+      padding: 0.4rem 0.7rem;
+      border-radius: 999px;
+      color: var(--color-text-soft);
+      font-weight: 500;
+    }
+
+    .nav-links a:hover {
+      background: rgba(241, 90, 41, 0.08);
+      color: var(--color-primary);
+    }
+
+    .nav-cta {
+      padding: 0.45rem 0.95rem;
+      border-radius: 999px;
+      background: var(--color-primary);
+      color: #FFFFFF !important;
+      font-weight: 600;
+      box-shadow: 0 10px 18px rgba(241, 90, 41, 0.25);
+    }
+
+    /* HERO */
+    .hero {
+      padding: 3.5rem 0 3rem;
+      background: radial-gradient(circle at top left, #FFECE2 0, #FFFFFF 55%);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.25rem 0.75rem;
+      border-radius: 999px;
+      background: #FFF5EF;
+      color: var(--color-primary);
+      font-size: 0.75rem;
+      font-weight: 600;
+      margin-bottom: 0.7rem;
+    }
+
+    .badge-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--color-primary);
+    }
+
+    .hero h1 {
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      line-height: 1.1;
+      margin-bottom: 0.75rem;
+      color: var(--color-dark);
+    }
+
+    .hero h1 span {
+      color: var(--color-primary);
+    }
+
+    .hero-subtitle {
+      font-size: 0.98rem;
+      color: var(--color-text-soft);
+      max-width: 34rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.7rem 1.3rem;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-size: 0.92rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      gap: 0.4rem;
+    }
+
+    .btn-primary {
+      background: var(--color-primary);
+      color: #FFFFFF;
+      box-shadow: 0 12px 24px rgba(241, 90, 41, 0.25);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      filter: brightness(0.96);
+    }
+
+    .btn-outline {
+      background: #FFFFFF;
+      color: var(--color-primary);
+      border-color: rgba(241, 90, 41, 0.5);
+    }
+
+    .btn-outline:hover {
+      background: #FFF3EC;
+    }
+
+    .hero-note {
+      font-size: 0.78rem;
+      color: var(--color-text-soft);
+    }
+
+    .hero-note span {
+      color: var(--color-primary);
+      font-weight: 600;
+    }
+
+    .hero-card {
+      background: #FFFFFF;
+      border-radius: 20px;
+      border: 1px solid #E5E7EB;
+      padding: 1.4rem 1.3rem;
+      box-shadow: 0 18px 35px rgba(15, 23, 42, 0.10);
+    }
+
+    .hero-card-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: var(--color-dark);
+    }
+
+    .hero-card-sub {
+      font-size: 0.8rem;
+      color: var(--color-text-soft);
+      margin-bottom: 1rem;
+    }
+
+    .hero-kpis {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+    }
+
+    .kpi {
+      background: #FFF7F3;
+      border-radius: 14px;
+      padding: 0.6rem 0.75rem;
+    }
+
+    .kpi-label {
+      font-size: 0.7rem;
+      color: var(--color-text-soft);
+      margin-bottom: 0.1rem;
+    }
+
+    .kpi-value {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--color-primary);
+    }
+
+    .hero-tagline {
+      font-size: 0.75rem;
+      color: var(--color-text-soft);
+      border-top: 1px dashed #E5E7EB;
+      padding-top: 0.6rem;
+      margin-top: 0.4rem;
+    }
+
+    /* SECTION: BENEFICIOS */
+    .section {
+      padding: 2.75rem 0;
+    }
+
+    .section-header {
+      margin-bottom: 1.5rem;
+    }
+
+    .section-eyebrow {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.13em;
+      color: var(--color-primary);
+      font-weight: 700;
+      margin-bottom: 0.3rem;
+    }
+
+    .section-title {
+      font-size: 1.4rem;
+      color: var(--color-dark);
+      margin-bottom: 0.3rem;
+    }
+
+    .section-description {
+      font-size: 0.95rem;
+      color: var(--color-text-soft);
+      max-width: 34rem;
+    }
+
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .benefit-card {
+      background: #FFFFFF;
+      border-radius: 16px;
+      border: 1px solid #E5E7EB;
+      padding: 1rem;
+    }
+
+    .benefit-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 999px;
+      background: #FFF3EC;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 0.5rem;
+      color: var(--color-primary);
+      font-size: 18px;
+    }
+
+    .benefit-title {
+      font-size: 0.98rem;
+      font-weight: 600;
+      margin-bottom: 0.2rem;
+    }
+
+    .benefit-text {
+      font-size: 0.85rem;
+      color: var(--color-text-soft);
+    }
+
+    /* CTA FINAL */
+    .cta-final {
+      background: #FFF5EF;
+      border-radius: 20px;
+      padding: 1.8rem 1.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .cta-final-text {
+      max-width: 28rem;
+    }
+
+    .cta-final-text h3 {
+      font-size: 1.2rem;
+      margin-bottom: 0.3rem;
+      color: var(--color-dark);
+    }
+
+    .cta-final-text p {
+      font-size: 0.9rem;
+      color: var(--color-text-soft);
+    }
+
+    footer {
+      border-top: 1px solid #E5E7EB;
+      padding: 1.5rem 0;
+      font-size: 0.8rem;
+      color: var(--color-text-soft);
+    }
+
+    footer .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    /* COTIZACIÓN / OFERTA */
+    .quote-section {
+      background: #050505;
+      color: #FFFFFF;
+      padding: 3rem 0;
+    }
+
+    .quote-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+      gap: 2.5rem;
+      align-items: flex-start;
+    }
+
+    .quote-title {
+      font-size: 2.2rem;
+      font-weight: 700;
+      margin-bottom: 0.8rem;
+    }
+
+    .quote-text {
+      font-size: 0.95rem;
+      color: #E5E7EB;
+      max-width: 28rem;
+    }
+
+    .quote-form-label {
+      display: block;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #D1D5DB;
+      margin-bottom: 0.3rem;
+    }
+
+    .quote-row {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .quote-input,
+    .quote-textarea {
+      width: 100%;
+      padding: 0.65rem 0.7rem;
+      border-radius: 2px;
+      border: none;
+      background: #FFFFFF;
+      color: #111827;
+      font-size: 0.9rem;
+    }
+
+    .quote-textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    .quote-submit {
+      margin-top: 1rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.7rem 1.6rem;
+      border-radius: 2px;
+      border: none;
+      background: #F15A29;
+      color: #FFFFFF;
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .quote-submit:hover {
+      filter: brightness(1.05);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .nav-links {
+        display: none;
+      }
+      .hero {
+        padding-top: 2.5rem;
+      }
+      .hero-grid {
+        grid-template-columns: 1fr;
+      }
+      .benefits-grid {
+        grid-template-columns: 1fr;
+      }
+      .cta-final {
+        align-items: flex-start;
+      }
+      .quote-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* ============================
+   BOTÓN FLOTANTE WHATSAPP
+============================ */
+.whatsapp-float {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #25D366;
+  color: #fff;
+  padding: 12px 14px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  box-shadow: 0 12px 24px rgba(0,0,0,0.18);
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.whatsapp-float:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.05);
+}
+
+.whatsapp-icon {
+  width: 22px;
+  height: 22px;
+  display: inline-block;
+}
+
+.whatsapp-text {
+  white-space: nowrap;
+}
+
+/* Versión mini en móvil */
+@media (max-width: 600px) {
+  .whatsapp-float {
+    padding: 12px;
+    border-radius: 50%;
+  }
+  .whatsapp-text {
+    display: none;
+  }
+}
+
+  </style>
+</head>
+
+<!-- BOTÓN FLOTANTE WHATSAPP -->
+<a class="whatsapp-float"
+   href="https://wa.me/573012882282?text=Hola%20TRICOM%20ENERGY,%20quiero%20asesor%C3%ADa%20para%20un%20sistema%20solar."
+   target="_blank"
+   rel="noopener">
+   
+  <!-- ícono whatsapp en SVG (no necesita archivos extra) -->
+  <svg class="whatsapp-icon" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+    <path fill="white" d="M19.11 17.49c-.27-.14-1.6-.79-1.85-.88-.25-.09-.43-.14-.61.14-.18.27-.7.88-.86 1.06-.16.18-.32.2-.59.07-.27-.14-1.15-.42-2.19-1.35-.81-.72-1.36-1.61-1.52-1.88-.16-.27-.02-.41.12-.55.12-.12.27-.32.41-.48.14-.16.18-.27.27-.45.09-.18.05-.34-.02-.48-.07-.14-.61-1.47-.84-2.01-.22-.53-.45-.46-.61-.47h-.52c-.18 0-.48.07-.73.34-.25.27-.95.93-.95 2.27 0 1.34.98 2.64 1.12 2.82.14.18 1.93 2.95 4.68 4.13.65.28 1.15.45 1.54.57.65.21 1.24.18 1.7.11.52-.08 1.6-.65 1.83-1.28.23-.63.23-1.17.16-1.28-.07-.11-.25-.18-.52-.32z"/>
+    <path fill="white" d="M26.67 5.33A13.24 13.24 0 0 0 16.01 1C8.83 1 3 6.82 3 13.99c0 2.22.58 4.39 1.68 6.3L3 31l10.9-1.67a12.93 12.93 0 0 0 6.11 1.56h.01c7.18 0 13-5.82 13-12.99 0-3.47-1.35-6.74-3.35-9.57zM20.01 28.6h-.01a10.8 10.8 0 0 1-5.52-1.53l-.39-.23-6.48.99 1.46-6.3-.25-.41a10.89 10.89 0 0 1-1.66-5.83C7.16 8.2 11.71 3.66 17.1 3.66c2.9 0 5.62 1.13 7.67 3.18a10.78 10.78 0 0 1 3.18 7.67c0 5.39-4.55 9.94-9.94 9.94z"/>
+  </svg>
+
+  <span class="whatsapp-text">WhatsApp</span>
+</a>
+
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="container">
+      <div class="nav">
+        <div class="brand">
+          <img src="logo tricom energy.png" alt="TRICOM ENERGY" style="height:60px; object-fit:contain;">
+        </div>
+
+        <nav class="nav-links">
+            <a href="index.html" style="color: var(--color-primary); font-weight: 600;">Inicio</a>
+            <a href="servicios.html">Servicios</a>
+            <a href="productos.html">Productos</a>
+            <a href="calculadora.html">Calculadora</a>
+            <a href="nosotros.html">Nosotros</a>
+            <a href="contacto.html" class="nav-cta">Contáctanos</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero-grid">
+          <div>
+            <div class="badge">
+              <span class="badge-dot"></span>
+              Energía solar para hogares y negocios
+            </div>
+            <h1>
+              Ahorra hasta un <span>80% en tu factura</span> con TRICOM ENERGY
+            </h1>
+            <p class="hero-subtitle">
+              Diseñamos e instalamos sistemas solares On-Grid, Off-Grid e híbridos con materiales de alta calidad.
+              Ideal para viviendas, comercios, fincas e industria que quieren independizarse de las altas tarifas eléctricas.
+            </p>
+
+            <div class="hero-actions">
+              <a href="#" class="btn btn-primary">
+                Solicitar estudio solar gratuito
+              </a>
+              <a href="#" class="btn btn-outline">
+                Calcular mi ahorro
+              </a>
+            </div>
+
+            <p class="hero-note">
+              <span>Materiales certificados</span> con tiempos de entrega aproximados de 15 días tras el primer anticipo.
+            </p>
+          </div>
+
+          <div>
+            <div class="hero-card">
+              <div class="hero-card-title">Resumen de tu proyecto solar</div>
+              <div class="hero-card-sub">
+                Una vista rápida de los beneficios que puedes obtener con TRICOM ENERGY.
+              </div>
+
+              <div class="hero-kpis">
+                <div class="kpi">
+                  <div class="kpi-label">Instalaciones realizadas</div>
+                  <div class="kpi-value">+100</div>
+                </div>
+                <div class="kpi">
+                  <div class="kpi-label">Ahorro promedio</div>
+                  <div class="kpi-value">70–80%</div>
+                </div>
+                <div class="kpi">
+                  <div class="kpi-label">Garantía paneles</div>
+                  <div class="kpi-value">25 años</div>
+                </div>
+                <div class="kpi">
+                  <div class="kpi-label">Soporte</div>
+                  <div class="kpi-value">24/7</div>
+                </div>
+              </div>
+
+              <p class="hero-tagline">
+                Proyectos llave en mano: diseño, instalación, legalización y acompañamiento postventa.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BENEFICIOS -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-eyebrow">Beneficios</div>
+          <h2 class="section-title">Por qué elegir energía solar con TRICOM ENERGY</h2>
+          <p class="section-description">
+            Más que paneles, te ofrecemos una solución completa adaptada a tu consumo, ubicación y presupuesto.
+          </p>
+        </div>
+
+        <div class="benefits-grid">
+          <article class="benefit-card">
+            <div class="benefit-icon">⚡</div>
+            <h3 class="benefit-title">Ahorro real y medible</h3>
+            <p class="benefit-text">
+              Reducción significativa de la factura mensual desde el primer mes, con retornos de inversión típicos entre 3 y 6 años.
+            </p>
+          </article>
+
+          <article class="benefit-card">
+            <div class="benefit-icon">🔧</div>
+            <h3 class="benefit-title">Instalación profesional</h3>
+            <p class="benefit-text">
+              Equipos certificados, diseño según RETIE y acompañamiento técnico para garantizar un sistema seguro y eficiente.
+            </p>
+          </article>
+
+          <article class="benefit-card">
+            <div class="benefit-icon">🌱</div>
+            <h3 class="benefit-title">Impacto ambiental positivo</h3>
+            <p class="benefit-text">
+              Disminuye tu huella de carbono y transforma tu hogar o negocio en un referente de sostenibilidad en tu región.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- COTIZACIÓN / SOLICITA UNA OFERTA -->
+    <section class="quote-section">
+      <div class="container">
+        <div class="quote-grid">
+
+          <div>
+            <h2 class="quote-title">Solicita una oferta</h2>
+            <p class="quote-text">
+              Permita que nuestro grupo de profesionales se ponga en contacto con usted
+              para ofrecerle la solución más óptima en sistemas de energía solar
+              y productos fotovoltaicos.
+            </p>
+          </div>
+
+          <div>
+            <form action="mailto:gerencia.proyectos@tricom.com.co" method="post" enctype="text/plain">
+
+              <div class="quote-row">
+                <div>
+                  <label class="quote-form-label">Nombre</label>
+                  <input class="quote-input" type="text" name="Nombre" placeholder="nombre" required>
+                </div>
+                <div>
+                  <label class="quote-form-label">Celular</label>
+                  <input class="quote-input" type="tel" name="Celular" placeholder="Teléfono" required>
+                </div>
+              </div>
+
+              <div class="quote-row">
+                <div>
+                  <label class="quote-form-label">Casa/Empresa</label>
+                  <input class="quote-input" type="text" name="Empresa" placeholder="Casa o empresa">
+
+                </div>
+                <div>
+                  <label class="quote-form-label">Correo electrónico</label>
+                  <input class="quote-input" type="email" name="Correo electrónico" placeholder="correo electrónico" required>
+                </div>
+              </div>
+
+              <div style="margin-bottom: 1rem;">
+                <label class="quote-form-label">Servicio</label>
+                  <select class="quote-input" name="Servicio" required>
+                    <option value="">Seleccionar servicio</option>
+                    <option value="sin_bateria_on_grid">Sin batería (On Grid)</option>
+                    <option value="con_bateria_off_grid">Con batería (Off Grid)</option>
+                    <option value="solicitud_productos">Solicitud de productos</option>
+                  </select>
+              </div>
+
+              <div>
+                <label class="quote-form-label">Información adicional</label>
+                <textarea class="quote-textarea" name="Información adicional" placeholder="Introduce la información adicional que requieras para tu cotización"></textarea>
+              </div>
+
+              <button type="submit" class="quote-submit">✔ Enviar</button>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA FINAL -->
+    <section class="section">
+      <div class="container">
+        <div class="cta-final">
+          <div class="cta-final-text">
+            <h3>¿Listo para comenzar tu proyecto solar con TRICOM ENERGY?</h3>
+            <p>
+              Danos algunos datos de tu consumo y te enviaremos una propuesta personalizada con equipos,
+              potencia sugerida, inversión estimada y tiempo de retorno.
+            </p>
+          </div>
+          <div style="display:flex; flex-direction:column; gap:0.5rem;">
+            <a href="#" class="btn btn-primary">Quiero una cotización</a>
+            <a href="#" class="btn btn-outline">Hablar con un asesor</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <span>© 2025 TRICOM ENERGY. Todos los derechos reservados.</span>
+        <span>Instalación de paneles solares y venta de productos fotovoltaicos.</span>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
