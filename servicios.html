@@ -9,64 +9,118 @@
     :root {
       --color-primary: #F15A29;
       --color-gray: #C0C0C0;
-      --color-dark: #111827;
+      --color-bg: #FFFFFF;
       --color-text: #1F2933;
-      --color-soft: #6B7280;
+      --color-text-soft: #6B7280; /* Usamos este nombre de variable consistente */
+      --color-dark: #111827;
       --color-bg-soft: #FFF5EF;
     }
 
-    body {
-      font-family: system-ui, sans-serif;
+    * {
+      box-sizing: border-box;
       margin: 0;
-      background: #fff;
-      color: var(--color-text);
+      padding: 0;
     }
 
-    a { text-decoration: none; color: inherit; }
+    body {
+      font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+      background: var(--color-bg);
+      color: var(--color-text);
+      line-height: 1.5;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
 
     .container {
       max-width: 1120px;
-      margin: auto;
-      padding: 1.5rem;
+      margin: 0 auto;
+      padding: 0 1.5rem;
     }
 
-    /* HEADER */
+    /* ========= HEADER (Común) ========= */
     header {
-      background: #fff;
-      border-bottom: 1px solid #eee;
-      padding: 0.8rem 0;
       position: sticky;
       top: 0;
-      z-index: 10;
+      z-index: 50;
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid #E5E7EB;
     }
 
     .nav {
       display: flex;
-      justify-content: space-between;
       align-items: center;
+      justify-content: space-between;
+      padding: 0.9rem 0;
+      gap: 1rem;
+      position: relative;
+    }
+
+    .nav img {
+      height: 60px;
+      object-fit: contain;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      font-size: 0.95rem;
     }
 
     .nav-links a {
-      margin-left: 1rem;
-      color: var(--color-soft);
+      padding: 0.4rem 0.7rem;
+      border-radius: 999px;
+      color: var(--color-text-soft);
       font-weight: 500;
-      padding: 0.4rem 0.6rem;
-      border-radius: 10px;
-      /* Aseguramos que los enlaces no se encojan en la barra scrollable */
-      flex-shrink: 0; 
     }
 
     .nav-links a:hover {
-      background: rgba(241,90,41,0.08);
+      background: rgba(241, 90, 41, 0.08);
       color: var(--color-primary);
     }
 
-    .nav-links .active {
+    .nav-links a.active {
       color: var(--color-primary);
-      font-weight: 700;
+      font-weight: 600;
     }
 
-    /* HERO */
+    .nav-cta {
+      padding: 0.45rem 0.95rem;
+      border-radius: 999px;
+      background: var(--color-primary);
+      color: #ffffff !important;
+      font-weight: 600;
+      box-shadow: 0 10px 18px rgba(241, 90, 41, 0.25);
+    }
+
+    /* Botón hamburguesa */
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0.35rem;
+    }
+
+    .menu-toggle span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      margin: 4px 0;
+      background: #111827;
+      border-radius: 999px;
+    }
+
+    /* ========= HERO (Específico) ========= */
     .hero {
       width: 100%;
       height: 380px;
@@ -87,7 +141,7 @@
       letter-spacing: 1px;
     }
 
-    /* SERVICES GRID */
+    /* SERVICES GRID (Específico) */
     .services-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -130,15 +184,15 @@
 
     .service-card p {
       font-size: 0.9rem;
-      color: var(--color-soft);
+      color: var(--color-text-soft); /* Uso de nueva variable */
       line-height: 1.5;
     }
 
-    /* CTA FINAL */
+    /* CTA FINAL (Específico) */
     .cta {
       margin-top: 4rem;
       padding: 2.5rem;
-      background: #FFF5EF;
+      background: var(--color-bg-soft);
       border-radius: 16px;
       text-align: center;
     }
@@ -151,7 +205,7 @@
 
     .cta p {
       font-size: 1rem;
-      color: var(--color-soft);
+      color: var(--color-text-soft); /* Uso de nueva variable */
       max-width: 600px;
       margin: auto;
       margin-bottom: 1.3rem;
@@ -166,120 +220,123 @@
       font-weight: 600;
     }
 
+    /* ========= FOOTER (Común) ========= */
     footer {
-      margin-top: 3rem;
-      padding: 1rem 0;
-      background: #fafafa;
-      text-align: center;
-      color: var(--color-soft);
+      padding: 1.3rem 0;
+      background: #F9FAFB;
+      border-top: 1px solid #E5E7EB;
       font-size: 0.85rem;
+      color: var(--color-text-soft);
+      margin-top: 3rem;
     }
 
-/* ============================
-   BOTÓN FLOTANTE WHATSAPP
-============================ */
-.whatsapp-float {
-  position: fixed;
-  right: 18px;
-  bottom: 18px;
-  z-index: 9999;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  background: #25D366;
-  color: #fff;
-  padding: 12px 14px;
-  border-radius: 999px;
-  font-weight: 700;
-  font-size: 0.95rem;
-  box-shadow: 0 12px 24px rgba(0,0,0,0.18);
-  transition: transform 0.2s ease, filter 0.2s ease;
-}
-
-.whatsapp-float:hover {
-  transform: translateY(-2px);
-  filter: brightness(1.05);
-}
-
-.whatsapp-icon {
-  width: 22px;
-  height: 22px;
-  display: inline-block;
-}
-
-.whatsapp-text {
-  white-space: nowrap;
-}
-
-/* Versión mini en móvil */
-@media (max-width: 600px) {
-  .whatsapp-float {
-    padding: 12px;
-    border-radius: 50%;
-  }
-  .whatsapp-text {
-    display: none;
-  }
-}
-
-/* ============================
-   RESPONSIVE (MENÚ SCROLLABLE)
-============================ */
-@media (max-width: 900px) {
-    .container {
-        padding: 0 1rem;
+    .footer-inner {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      justify-content: space-between;
+      align-items: center;
     }
 
-    .nav {
-        /* Apila el logo y los links verticalmente */
+
+    /* ========= WHATSAPP FLOTANTE (Común) ========= */
+
+    .whatsapp-float {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: #25D366;
+      color: #fff;
+      padding: 12px 14px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      box-shadow: 0 12px 24px rgba(0,0,0,0.18);
+      transition: transform 0.2s ease, filter 0.2s ease;
+    }
+
+    .whatsapp-float:hover {
+      transform: translateY(-2px);
+      filter: brightness(1.05);
+    }
+
+    .whatsapp-icon {
+      width: 22px;
+      height: 22px;
+      display: inline-block;
+    }
+
+    .whatsapp-text {
+      white-space: nowrap;
+    }
+
+    /* ========= RESPONSIVE (Común) ========= */
+
+    @media (max-width: 900px) {
+      .nav {
+        padding: 0.7rem 0;
+      }
+
+      .nav-links {
+        position: absolute;
+        top: 100%;
+        right: 1.5rem;
+        left: 1.5rem;
+        background: #ffffff;
+        border-radius: 12px;
+        box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+        padding: 0.75rem 0.9rem;
+        
+        /* OCULTAMOS POR DEFECTO EN MÓVIL */
+        display: none;
+
+        flex-direction: column;
+        gap: 0.4rem;
+        margin-top: 0.4rem;
+      }
+
+      /* ARREGLO CLAVE: Usamos !important para anular cualquier otra regla de display */
+      .nav-links.nav-open {
+        display: flex !important;
+      }
+
+      .menu-toggle {
+        display: inline-block;
+      }
+      
+      .footer-inner {
         flex-direction: column;
         align-items: flex-start;
-        gap: 0.6rem; 
-    }
-    
-    .nav img {
-        height: 40px; /* Hacemos el logo un poco más pequeño en móvil */
+      }
     }
 
-    .nav-links {
-        /* Hacemos el menú scrollable horizontalmente */
-        width: 100%;
-        display: flex; 
-        overflow-x: auto; /* Permite el desplazamiento horizontal */
-        white-space: nowrap; /* Evita que los enlaces salten de línea */
-        -webkit-overflow-scrolling: touch; /* Mejora el rendimiento en iOS */
-        
-        padding-bottom: 0.5rem; /* Espacio para el scroll */
-        
-        /* Oculta la barra de desplazamiento en navegadores */
-        scrollbar-width: none;  /* Firefox */
-        -ms-overflow-style: none; /* IE and Edge */
-    }
-    
-    /* Regla para ocultar la barra de desplazamiento en Webkit (Chrome, Safari) */
-    .nav-links::-webkit-scrollbar {
+    @media (max-width: 600px) {
+      .container {
+        padding: 0 1rem;
+      }
+      .whatsapp-float {
+        padding: 12px;
+        border-radius: 50%;
+      }
+      .whatsapp-text {
         display: none;
-    }
-    
-    .nav-links a {
-        margin-left: 0.5rem; /* Espacio entre los elementos */
-    }
-
-    .nav-links a:first-child {
-        margin-left: 0; /* Asegura que el primer elemento esté al borde izquierdo */
-    }
-    
-    .hero {
-        height: 250px; /* Altura más corta en móvil */
-    }
-
-    .hero-title {
+      }
+      .hero {
+        height: 300px;
+      }
+      .hero-title {
         font-size: 1.8rem;
+      }
     }
-}
 
 </style>
 </head>
+
+<body>
 
 <a class="whatsapp-float"
    href="https://wa.me/573012882282?text=Hola%20TRICOM%20ENERGY,%20quiero%20asesor%C3%ADa%20para%20un%20sistema%20solar."
@@ -294,19 +351,25 @@
   <span class="whatsapp-text">WhatsApp</span>
 </a>
 
-<body>
-
 <header>
-  <div class="container nav">
-    <img src="logo tricom energy.png" style="height:50px;">
-    
-    <div class="nav-links">
-      <a href="index.html">Inicio</a>
-      <a class="active" href="servicios.html">Servicios</a>
-      <a href="productos.html">Productos</a>
-      <a href="calculadora.html">Calculadora</a>
-      <a href="nosotros.html">Nosotros</a>
-      <a href="contacto.html">Contacto</a> 
+  <div class="container">
+    <div class="nav">
+      <img src="logo tricom energy.png" alt="TRICOM ENERGY">
+
+      <nav class="nav-links">
+        <a href="index.html">Inicio</a>
+        <a href="servicios.html" class="active">Servicios</a>
+        <a href="productos.html">Productos</a>
+        <a href="calculadora.html">Calculadora</a>
+        <a href="nosotros.html">Nosotros</a>
+        <a href="contacto.html" class="nav-cta">Contáctanos</a>
+      </nav>
+
+      <button class="menu-toggle" aria-label="Abrir menú">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
     </div>
   </div>
 </header>
@@ -360,8 +423,24 @@
 </div>
 
 <footer>
-  © 2025 TRICOM ENERGY — Soluciones solares de alta eficiencia.
+  <div class="container footer-inner">
+    <span>© 2025 TRICOM ENERGY. Todos los derechos reservados.</span>
+    <span>Soluciones solares de alta eficiencia.</span>
+  </div>
 </footer>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const toggle = document.querySelector(".menu-toggle");
+  const nav = document.querySelector(".nav-links");
+  if (!toggle || !nav) return;
+
+  toggle.addEventListener("click", function () {
+    nav.classList.toggle("nav-open");
+  });
+});
+</script>
 
 </body>
 </html>
+
