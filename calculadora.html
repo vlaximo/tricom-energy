@@ -52,6 +52,8 @@
     font-weight: 500;
     padding: 0.4rem 0.6rem;
     border-radius: 10px;
+    /* Nuevo: Asegura que los enlaces no se encojan en la barra scrollable */
+    flex-shrink: 0; 
   }
 
   .nav-links a:hover {
@@ -66,140 +68,168 @@
 
   /* HERO */
   .hero {
-    padding: 3.5rem 0;
-    background: linear-gradient(to right, #fff8f4, #ffffff);
+    width: 100%;
+    height: 380px;
+    background: var(--color-bg-soft);
+    border-bottom: 4px solid var(--color-primary);
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+  }
+
+  .hero-title {
+    width: 100%;
+    padding: 2rem 1.5rem;
     text-align: center;
-  }
-
-  .hero h1 {
-    font-size: 2.3rem;
     color: var(--color-dark);
-    margin-bottom: 0.6rem;
-  }
-
-  .hero p {
-    font-size: 1rem;
-    color: var(--color-soft);
-    max-width: 700px;
-    margin: auto;
-  }
-
-  /* CALCULATOR LAYOUT */
-  .calc-grid {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr);
-    gap: 1.5rem;
-    margin-top: 2rem;
-    align-items: start;
-  }
-
-  .card {
-    border: 1px solid #E5E7EB;
-    border-radius: 14px;
-    padding: 1.2rem;
-    background: #fff;
-  }
-
-  .card h2 {
-    font-size: 1.2rem;
-    color: var(--color-dark);
-    margin-bottom: 1rem;
-  }
-
-  .field {
-    margin-bottom: 1rem;
-  }
-
-  label {
-    display: block;
-    font-size: 0.8rem;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
+    font-size: 2.4rem;
     font-weight: 700;
+    letter-spacing: 1px;
+    line-height: 1.2;
+  }
+
+  .hero-subtitle {
+    text-align: center;
     color: var(--color-soft);
-    margin-bottom: 0.4rem;
+    font-size: 1.1rem;
+    padding-bottom: 2rem;
   }
 
-  input, select {
-    width: 100%;
-    padding: 0.65rem 0.7rem;
-    border-radius: 8px;
-    border: 1px solid #E5E7EB;
-    font-size: 0.95rem;
-    outline: none;
-  }
-
-  input:focus, select:focus {
-    border-color: var(--color-primary);
-    box-shadow: 0 0 0 3px rgba(241,90,41,0.12);
-  }
-
-  .row-2 {
+  /* CALCULATOR FORM */
+  .calculator-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0.8rem;
+    grid-template-columns: 2fr 1fr;
+    gap: 3rem;
+    margin-top: 2rem;
   }
 
-  .btn {
+  .form-group {
+    margin-bottom: 1.2rem;
+  }
+
+  .form-group label {
+    display: block;
+    font-weight: 600;
+    color: var(--color-dark);
+    margin-bottom: 0.4rem;
+    font-size: 0.95rem;
+  }
+
+  .form-group input,
+  .form-group select {
     width: 100%;
-    padding: 0.8rem;
+    padding: 0.7rem 1rem;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: system-ui, sans-serif;
+  }
+
+  .form-group .description {
+    font-size: 0.85rem;
+    color: var(--color-soft);
+    margin-top: 0.3rem;
+  }
+
+  .btn-calculate {
+    display: block;
+    width: 100%;
+    padding: 0.9rem 1rem;
     background: var(--color-primary);
     color: #fff;
-    font-size: 1rem;
-    font-weight: 700;
     border: none;
     border-radius: 10px;
-    cursor: pointer;
-  }
-
-  .btn:hover { filter: brightness(1.05); }
-
-  /* RESULTS */
-  .result-box {
-    background: var(--color-bg-soft);
-    border-radius: 12px;
-    padding: 1rem;
-    margin-bottom: 0.8rem;
-  }
-
-  .result-title {
-    font-size: 0.9rem;
+    font-size: 1rem;
     font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  .btn-calculate:hover {
+    background: #e04a18;
+  }
+
+  /* RESULTS CARD */
+  .results-card {
+    background: #fafafa;
+    border: 1px solid #eee;
+    padding: 2rem;
+    border-radius: 14px;
+    position: sticky;
+    top: 7rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  }
+
+  .results-card h2 {
+    font-size: 1.6rem;
+    margin-top: 0;
+    margin-bottom: 1.5rem;
     color: var(--color-dark);
-    margin-bottom: 0.2rem;
+    text-align: center;
+    border-bottom: 1px dashed #ddd;
+    padding-bottom: 1.2rem;
+  }
+
+  .result-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.8rem 0;
+    border-bottom: 1px solid #e5e7eb;
+    font-size: 1rem;
+  }
+
+  .result-item:last-child {
+    border-bottom: none;
+  }
+
+  .result-item strong {
+    color: var(--color-dark);
+    font-weight: 600;
   }
 
   .result-value {
-    font-size: 1.3rem;
-    font-weight: 800;
     color: var(--color-primary);
+    font-weight: 700;
   }
 
-  .muted {
-    font-size: 0.85rem;
-    color: var(--color-soft);
+  .result-note {
+    background: #e6f6e6;
+    border: 1px solid #d4ecd4;
+    padding: 1rem;
+    border-radius: 10px;
+    margin-top: 1.5rem;
+    font-size: 0.9rem;
+    color: #1a5e1a;
   }
 
-  /* CTA */
+  /* CTA FINAL */
   .cta {
-    margin-top: 2rem;
-    padding: 1.5rem;
+    margin-top: 3.5rem;
+    padding: 2.2rem;
     background: var(--color-bg-soft);
-    border-radius: 14px;
+    border-radius: 16px;
     text-align: center;
   }
 
-  .cta h3 {
-    margin: 0 0 0.5rem 0;
+  .cta h2 {
+    font-size: 1.7rem;
+    margin-bottom: 0.4rem;
     color: var(--color-dark);
+  }
+
+  .cta p {
+    font-size: 1rem;
+    color: var(--color-soft);
+    max-width: 650px;
+    margin: auto;
+    margin-bottom: 1.2rem;
   }
 
   .cta a {
     display: inline-block;
-    margin-top: 0.6rem;
     background: var(--color-primary);
     color: #fff;
-    padding: 0.7rem 1.2rem;
+    padding: 0.8rem 1.5rem;
     border-radius: 10px;
     font-weight: 700;
   }
@@ -211,12 +241,6 @@
     text-align: center;
     color: var(--color-soft);
     font-size: 0.85rem;
-  }
-
-  @media (max-width: 900px) {
-    .calc-grid {
-      grid-template-columns: 1fr;
-    }
   }
 
   /* ============================
@@ -266,16 +290,80 @@
   }
 }
 
+/* ============================
+   RESPONSIVE (MENÚ SCROLLABLE)
+   Incluye la nueva lógica de navegación móvil
+============================ */
+@media (max-width: 900px) {
+    .container {
+        padding: 0 1rem;
+    }
+
+    .nav {
+        /* Apila el logo y los links verticalmente */
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.6rem; 
+    }
+    
+    .nav img {
+        height: 40px; /* Hacemos el logo un poco más pequeño en móvil */
+    }
+
+    .nav-links {
+        /* Hacemos el menú scrollable horizontalmente */
+        width: 100%;
+        display: flex; 
+        overflow-x: auto; /* Permite el desplazamiento horizontal */
+        white-space: nowrap; /* Evita que los enlaces salten de línea */
+        -webkit-overflow-scrolling: touch; /* Mejora el rendimiento en iOS */
+        
+        padding-bottom: 0.5rem; /* Espacio para el scroll */
+        
+        /* Oculta la barra de desplazamiento en navegadores */
+        scrollbar-width: none;  /* Firefox */
+        -ms-overflow-style: none; /* IE and Edge */
+    }
+    
+    /* Regla para ocultar la barra de desplazamiento en Webkit (Chrome, Safari) */
+    .nav-links::-webkit-scrollbar {
+        display: none;
+    }
+    
+    .nav-links a {
+        margin-left: 0.5rem; /* Espacio entre los elementos */
+    }
+
+    .nav-links a:first-child {
+        margin-left: 0; /* Asegura que el primer elemento esté al borde izquierdo */
+    }
+    
+    .hero {
+        height: 250px; /* Altura más corta en móvil */
+    }
+    
+    .hero-title {
+        font-size: 1.8rem;
+    }
+
+    .calculator-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .results-card {
+        position: static; /* Quitar sticky en móvil */
+    }
+}
+
 </style>
 </head>
 
-<!-- BOTÓN FLOTANTE WHATSAPP -->
 <a class="whatsapp-float"
    href="https://wa.me/573012882282?text=Hola%20TRICOM%20ENERGY,%20quiero%20asesor%C3%ADa%20para%20un%20sistema%20solar."
    target="_blank"
    rel="noopener">
    
-  <!-- ícono whatsapp en SVG (no necesita archivos extra) -->
   <svg class="whatsapp-icon" viewBox="0 0 32 32" fill="none" aria-hidden="true">
     <path fill="white" d="M19.11 17.49c-.27-.14-1.6-.79-1.85-.88-.25-.09-.43-.14-.61.14-.18.27-.7.88-.86 1.06-.16.18-.32.2-.59.07-.27-.14-1.15-.42-2.19-1.35-.81-.72-1.36-1.61-1.52-1.88-.16-.27-.02-.41.12-.55.12-.12.27-.32.41-.48.14-.16.18-.27.27-.45.09-.18.05-.34-.02-.48-.07-.14-.61-1.47-.84-2.01-.22-.53-.45-.46-.61-.47h-.52c-.18 0-.48.07-.73.34-.25.27-.95.93-.95 2.27 0 1.34.98 2.64 1.12 2.82.14.18 1.93 2.95 4.68 4.13.65.28 1.15.45 1.54.57.65.21 1.24.18 1.7.11.52-.08 1.6-.65 1.83-1.28.23-.63.23-1.17.16-1.28-.07-.11-.25-.18-.52-.32z"/>
     <path fill="white" d="M26.67 5.33A13.24 13.24 0 0 0 16.01 1C8.83 1 3 6.82 3 13.99c0 2.22.58 4.39 1.68 6.3L3 31l10.9-1.67a12.93 12.93 0 0 0 6.11 1.56h.01c7.18 0 13-5.82 13-12.99 0-3.47-1.35-6.74-3.35-9.57zM20.01 28.6h-.01a10.8 10.8 0 0 1-5.52-1.53l-.39-.23-6.48.99 1.46-6.3-.25-.41a10.89 10.89 0 0 1-1.66-5.83C7.16 8.2 11.71 3.66 17.1 3.66c2.9 0 5.62 1.13 7.67 3.18a10.78 10.78 0 0 1 3.18 7.67c0 5.39-4.55 9.94-9.94 9.94z"/>
@@ -301,166 +389,192 @@
 </header>
 
 <section class="hero">
-  <h1>Calculadora Solar TRICOM ENERGY</h1>
-  <p>Estima cuántos paneles necesitas, la producción mensual y el ahorro aproximado según tu consumo y ciudad.</p>
+  <div style="max-width: 700px; padding: 0 1.5rem;">
+    <div class="hero-title">Calculadora de Ahorro Solar</div>
+    <div class="hero-subtitle">Estima cuántos paneles necesitas y cuánto puedes ahorrar en tu factura eléctrica.</div>
+  </div>
 </section>
 
-<div class="container calc-grid">
+<div class="container">
 
-  <!-- INPUTS -->
-  <div class="card">
-    <h2>Datos del cliente</h2>
-
-    <div class="field">
-      <label>Consumo mensual (kWh)</label>
-      <input id="consumo" type="number" placeholder="Ej: 950" min="0">
-    </div>
-
-    <div class="row-2">
-      <div class="field">
-        <label>Ciudad / HSP</label>
-        <input id="hsp" type="number" step="0.1" placeholder="Ej: 5.3" value="5.3">
-        <div class="muted">Horas Sol Pico promedio</div>
+  <div class="calculator-grid">
+    
+    <div class="inputs">
+      <div class="form-group">
+        <label for="consumo">Consumo Promedio Mensual (kWh)</label>
+        <input type="number" id="consumo" value="300" min="50" step="10" required>
+        <div class="description">Puedes encontrar este valor en tu factura de energía.</div>
       </div>
 
-      <div class="field">
-        <label>Tarifa energía (COP/kWh)</label>
-        <input id="tarifa" type="number" placeholder="Ej: 1000" value="1000" min="0">
-      </div>
-    </div>
-
-    <div class="row-2">
-      <div class="field">
-        <label>Potencia panel (Wp)</label>
-        <input id="wp" type="number" placeholder="Ej: 605" value="605" min="0">
+      <div class="form-group">
+        <label for="tarifa">Costo por kWh (COP)</label>
+        <input type="number" id="tarifa" value="750" min="100" step="10" required>
+        <div class="description">Ingresa el valor unitario por kilovatio hora.</div>
       </div>
 
-      <div class="field">
-        <label>Pérdidas estimadas (%)</label>
-        <input id="perdidas" type="number" placeholder="Ej: 15" value="15" min="0" max="40">
-        <div class="muted">Cableado, temperatura, inversor</div>
+      <div class="form-group">
+        <label for="ciudad">Ubicación (Horas de Sol Pico)</label>
+        <select id="ciudad">
+          <option value="5.8">Santa Marta, Cartagena (5.8 HSP)</option>
+          <option value="5.5" selected>Cúcuta, Bucaramanga (5.5 HSP)</option>
+          <option value="5.3">Barranquilla, Valledupar (5.3 HSP)</option>
+          <option value="4.8">Medellín, Cali (4.8 HSP)</option>
+          <option value="4.4">Bogotá, Pasto (4.4 HSP)</option>
+        </select>
+        <div class="description">Selecciona la ciudad más cercana para una estimación precisa.</div>
       </div>
-    </div>
 
-    <div class="row-2">
-      <div class="field">
-        <label>Tipo de sistema</label>
-        <select id="tipo">
-          <option value="on">On Grid (sin batería)</option>
-          <option value="off">Off Grid (con batería)</option>
-          <option value="hyb">Híbrido</option>
+      <div class="form-group">
+        <label for="panel-wp">Potencia del Panel (Wp)</label>
+        <select id="panel-wp">
+          <option value="670">Panel 670 Wp (Industrial)</option>
+          <option value="620" selected>Panel 620 Wp (Alta Eficiencia)</option>
+          <option value="450">Panel 450 Wp (Residencial Estándar)</option>
         </select>
       </div>
 
-      <div class="field">
-        <label>Cobertura deseada (%)</label>
-        <input id="cobertura" type="number" value="100" min="10" max="120">
-        <div class="muted">100% = cubrir todo el consumo</div>
+      <div class="form-group">
+        <label for="cobertura">Porcentaje de Cobertura Deseada</label>
+        <select id="cobertura">
+          <option value="1">100% de cobertura</option>
+          <option value="0.8">80% de cobertura (Recomendado para On-Grid)</option>
+          <option value="0.5">50% de cobertura</option>
+        </select>
+        <div class="description">El porcentaje de tu consumo que deseas cubrir con energía solar.</div>
+      </div>
+      
+      <div class="form-group">
+        <label for="tipo">Tipo de Sistema</label>
+        <select id="tipo">
+          <option value="on">On Grid (Sin baterías)</option>
+          <option value="off">Off Grid (Con baterías)</option>
+          <option value="hibrido">Híbrido (Conexión a red y baterías)</option>
+        </select>
+      </div>
+
+      <button id="calcularBtn" class="btn-calculate">Calcular Ahorro</button>
+      
+    </div>
+
+    <div class="results">
+      <div class="results-card">
+        <h2>Resultados Estimados</h2>
+
+        <div class="result-item">
+          <strong>Paneles Necesarios:</strong>
+          <span id="resPaneles" class="result-value">0</span>
+        </div>
+
+        <div class="result-item">
+          <strong>Potencia Instalada (kWp):</strong>
+          <span id="resPotencia" class="result-value">0 kWp</span>
+        </div>
+
+        <div class="result-item">
+          <strong>Producción Estimada:</strong>
+          <span id="resProduccion" class="result-value">0 kWh/mes</span>
+        </div>
+
+        <div class="result-item">
+          <strong>Área Requerida:</strong>
+          <span id="resArea" class="result-value">0 m²</span>
+        </div>
+        
+        <div class="result-item" style="border-top: 2px solid var(--color-primary); margin-top: 10px; padding-top: 10px;">
+          <strong>Ahorro Estimado Mensual:</strong>
+          <span id="resAhorro" class="result-value">$ 0</span>
+        </div>
+        
+        <div id="resNota" class="result-note" style="display:none;"></div>
+
       </div>
     </div>
 
-    <button class="btn" onclick="calcular()">Calcular</button>
   </div>
 
-  <!-- RESULTS -->
-  <div class="card">
-    <h2>Resultados estimados</h2>
-
-    <div class="result-box">
-      <div class="result-title">Paneles necesarios</div>
-      <div id="resPaneles" class="result-value">—</div>
-      <div class="muted">Basado en consumo y HSP</div>
-    </div>
-
-    <div class="result-box">
-      <div class="result-title">Potencia total del sistema</div>
-      <div id="resPotencia" class="result-value">—</div>
-      <div class="muted">kWp instalados</div>
-    </div>
-
-    <div class="result-box">
-      <div class="result-title">Producción mensual estimada</div>
-      <div id="resProduccion" class="result-value">—</div>
-      <div class="muted">kWh/mes</div>
-    </div>
-
-    <div class="result-box">
-      <div class="result-title">Área aproximada requerida</div>
-      <div id="resArea" class="result-value">—</div>
-      <div class="muted">m² (≈ 2.2 m² por panel)</div>
-    </div>
-
-    <div class="result-box">
-      <div class="result-title">Ahorro mensual estimado</div>
-      <div id="resAhorro" class="result-value">—</div>
-      <div class="muted">COP/mes</div>
-    </div>
-
-    <div class="muted" id="notaSistema" style="margin-top:0.6rem;"></div>
-
-    <div class="cta">
-      <h3>¿Quieres una propuesta formal?</h3>
-      <p class="muted">Con estos datos te enviamos una cotización ajustada a tu proyecto.</p>
-      <a href="index.html#formulario">Solicitar oferta</a>
-    </div>
+  <div class="cta">
+    <h2>¿Quieres una cotización oficial?</h2>
+    <p>Estos son valores estimados. Contáctanos para un estudio detallado y un diseño preciso de tu sistema solar.</p>
+    <a href="index.html#formulario">Solicitar cotización</a>
   </div>
 
 </div>
 
 <footer>
-  © 2025 TRICOM ENERGY — Calculadora solar de referencia.
+  © 2025 TRICOM ENERGY — Energía solar para un futuro sostenible.
 </footer>
 
 <script>
-function calcular() {
-  const consumo = parseFloat(document.getElementById("consumo").value || 0);
-  const hsp = parseFloat(document.getElementById("hsp").value || 0);
-  const wp = parseFloat(document.getElementById("wp").value || 0);
-  const tarifa = parseFloat(document.getElementById("tarifa").value || 0);
-  const perdidas = parseFloat(document.getElementById("perdidas").value || 0) / 100;
-  const cobertura = parseFloat(document.getElementById("cobertura").value || 100) / 100;
-  const tipo = document.getElementById("tipo").value;
+  function calcularSolar() {
+    const consumo = parseFloat(document.getElementById("consumo").value);
+    const tarifa = parseFloat(document.getElementById("tarifa").value);
+    const hsp = parseFloat(document.getElementById("ciudad").value);
+    const wp = parseFloat(document.getElementById("panel-wp").value);
+    const cobertura = parseFloat(document.getElementById("cobertura").value);
+    const tipo = document.getElementById("tipo").value;
 
-  if (consumo <= 0 || hsp <= 0 || wp <= 0) {
-    alert("Por favor ingresa consumo, HSP y potencia del panel.");
-    return;
+    if (isNaN(consumo) || consumo <= 0) {
+      document.getElementById("resPaneles").innerText = "Error";
+      document.getElementById("resNota").innerText = "Ingresa un consumo válido.";
+      document.getElementById("resNota").style.display = "block";
+      return;
+    }
+
+    // Pérdidas del sistema (inversor, cables, temperatura)
+    const perdidas = 0.18; // 18% de pérdidas
+
+    // Producción de 1 panel al mes (kWh/mes) = (Wp / 1000) * HSP * 30 días * (1 - perdidas)
+    const kwPanel = wp / 1000;
+    const prodPanelMes = kwPanel * hsp * 30 * (1 - perdidas);
+
+    // Paneles necesarios para cubrir el consumo deseado
+    const paneles = Math.ceil((consumo * cobertura) / prodPanelMes);
+
+    // Potencia total
+    const potenciaTotal = paneles * kwPanel; // kWp
+
+    // Producción estimada total
+    const produccionTotal = prodPanelMes * paneles;
+
+    // Área aproximada
+    const area = paneles * 2.2; // m2 promedio por panel
+
+    // Ahorro mensual
+    const ahorro = Math.min(produccionTotal, consumo) * tarifa;
+
+    // Mostrar resultados
+    document.getElementById("resPaneles").innerText = paneles + " paneles";
+    document.getElementById("resPotencia").innerText = potenciaTotal.toFixed(2) + " kWp";
+    document.getElementById("resProduccion").innerText = produccionTotal.toFixed(0) + " kWh/mes";
+    document.getElementById("resArea").innerText = area.toFixed(1) + " m²";
+    document.getElementById("resAhorro").innerText = "$ " + ahorro.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+
+    // Nota según sistema
+    let nota = "";
+    if (tipo === "on") nota = "Sistema On Grid: conectado a la red eléctrica, ideal si no necesitas baterías.";
+    if (tipo === "off") nota = "Sistema Off Grid: independiente de la red eléctrica, requiere baterías para operar.";
+    if (tipo === "hibrido") nota = "Sistema Híbrido: conectado a la red, pero con baterías de respaldo para cortes de energía.";
+    
+    document.getElementById("resNota").innerText = nota;
+    document.getElementById("resNota").style.display = "block";
   }
 
-  // Producción por panel al mes aproximada:
-  // wp(kW) * HSP * 30 días * (1 - perdidas)
-  const kwPanel = wp / 1000;
-  const prodPanelMes = kwPanel * hsp * 30 * (1 - perdidas);
+  // Inicializar cálculo y agregar listener al botón
+  document.addEventListener("DOMContentLoaded", function() {
+    calcularSolar(); // Inicializa al cargar
 
-  // Paneles necesarios para cubrir el consumo deseado
-  const paneles = Math.ceil((consumo * cobertura) / prodPanelMes);
-
-  // Potencia total
-  const potenciaTotal = paneles * kwPanel; // kWp
-
-  // Producción estimada total
-  const produccionTotal = prodPanelMes * paneles;
-
-  // Área aproximada
-  const area = paneles * 2.2; // m2 promedio por panel
-
-  // Ahorro mensual
-  const ahorro = Math.min(produccionTotal, consumo) * tarifa;
-
-  // Mostrar resultados
-  document.getElementById("resPaneles").innerText = paneles + " paneles";
-  document.getElementById("resPotencia").innerText = potenciaTotal.toFixed(2) + " kWp";
-  document.getElementById("resProduccion").innerText = produccionTotal.toFixed(0) + " kWh/mes";
-  document.getElementById("resArea").innerText = area.toFixed(1) + " m²";
-  document.getElementById("resAhorro").innerText = "$ " + ahorro.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-
-  // Nota según sistema
-  let nota = "";
-  if (tipo === "on") nota = "Sistema On Grid: conectado a la red eléctrica, ideal si no necesitas baterías.";
-  if (tipo === "off") nota = "Sistema Off Grid: independiente de la red, requiere baterías para almacenamiento.";
-  if (tipo === "hyb") nota = "Sistema Híbrido: combina red + baterías para respaldo en cortes.";
-  document.getElementById("notaSistema").innerText = nota;
-}
+    document.getElementById("calcularBtn").addEventListener("click", calcularSolar);
+    
+    // Opcional: Recalcular automáticamente al cambiar cualquier input
+    document.getElementById("consumo").addEventListener("input", calcularSolar);
+    document.getElementById("tarifa").addEventListener("input", calcularSolar);
+    document.getElementById("ciudad").addEventListener("change", calcularSolar);
+    document.getElementById("panel-wp").addEventListener("change", calcularSolar);
+    document.getElementById("cobertura").addEventListener("change", calcularSolar);
+    document.getElementById("tipo").addEventListener("change", calcularSolar);
+  });
 </script>
 
 </body>
 </html>
+
