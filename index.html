@@ -83,6 +83,8 @@
       border-radius: 999px;
       color: var(--color-text-soft);
       font-weight: 500;
+      /* Importante para el scroll en móvil: evita que el enlace se encoja */
+      flex-shrink: 0; 
     }
 
     .nav-links a:hover {
@@ -104,10 +106,9 @@
       box-shadow: 0 10px 18px rgba(241, 90, 41, 0.25);
     }
 
-    /* Botón hamburguesa */
+    /* Botón hamburguesa - ELIMINADO EN EL HTML, MANTENEMOS ESTILOS POR SI ACASO */
 
     .menu-toggle {
-      /* Por defecto no se muestra en desktop */
       display: none; 
       background: none;
       border: none;
@@ -124,7 +125,7 @@
       border-radius: 999px;
     }
 
-    /* ========= HERO ========= */
+    /* ========= HERO - (Estilos sin cambios) ========= */
 
     .hero {
       padding: 3.5rem 0 3rem;
@@ -256,7 +257,7 @@
       color: var(--color-primary);
     }
 
-    /* ========= SECCIÓN RESUMEN ========= */
+    /* ========= SECCIÓN RESUMEN - (Estilos sin cambios) ========= */
 
     .section {
       padding: 3rem 0;
@@ -302,7 +303,7 @@
       margin-top: 0.2rem;
     }
 
-    /* ========= FORMULARIO COTIZACIÓN ========= */
+    /* ========= FORMULARIO COTIZACIÓN - (Estilos sin cambios) ========= */
 
     .quote-section {
       padding: 3rem 0 3.5rem;
@@ -394,7 +395,7 @@
       filter: brightness(1.05);
     }
 
-    /* ========= FOOTER ========= */
+    /* ========= FOOTER - (Estilos sin cambios) ========= */
 
     footer {
       padding: 1.3rem 0;
@@ -412,7 +413,7 @@
       align-items: center;
     }
 
-    /* ========= WHATSAPP FLOTANTE ========= */
+    /* ========= WHATSAPP FLOTANTE - (Estilos sin cambios) ========= */
 
     .whatsapp-float {
       position: fixed;
@@ -457,39 +458,58 @@
       }
     }
 
-    /* ========= RESPONSIVE ========= */
+    /* ========= RESPONSIVE (MENÚ SCROLLABLE) ========= */
 
     @media (max-width: 900px) {
       .nav {
         padding: 0.7rem 0;
+        /* Hacemos que el logo y el menú se apilen verticalmente */
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.7rem; 
+      }
+      
+      .nav img {
+        height: 50px; 
       }
 
       .nav-links {
-        position: absolute;
-        top: 100%;
-        right: 1.5rem;
-        left: 1.5rem;
-        background: #ffffff;
-        border-radius: 12px;
-        box-shadow: 0 12px 25px rgba(0,0,0,0.15);
-        padding: 0.75rem 0.9rem;
+        /* ESTILOS CLAVE: Convertimos el menú en una barra scrollable */
+        width: 100%;
+        display: flex; 
+        overflow-x: auto; /* Permite el desplazamiento horizontal */
+        white-space: nowrap; /* Evita que los enlaces salten de línea */
+        -webkit-overflow-scrolling: touch; /* Mejora el rendimiento en iOS */
         
-        /* OCULTAMOS POR DEFECTO EN MÓVIL */
-        display: none; 
-
-        flex-direction: column;
-        gap: 0.4rem;
-        margin-top: 0.4rem;
+        /* Limpiamos estilos del menú hamburguesa */
+        position: static; 
+        box-shadow: none; 
+        background: transparent; 
+        border-radius: 0;
+        padding: 0.2rem 0; 
+        border: none;
+        margin-top: 0;
+        
+        /* Oculta la barra de desplazamiento en navegadores */
+        scrollbar-width: none;  /* Firefox */
+        -ms-overflow-style: none; /* IE and Edge */
+      }
+      
+      /* Regla para ocultar la barra de desplazamiento en Webkit (Chrome, Safari) */
+      .nav-links::-webkit-scrollbar {
+          display: none;
+      }
+      
+      .nav-links a {
+          margin-right: 0.5rem; /* Espacio entre los elementos */
       }
 
-      /* ARREGLO CLAVE: Usamos !important para anular cualquier otra regla de display */
-      .nav-links.nav-open {
-        display: flex !important;
-      }
 
       .menu-toggle {
-        display: inline-block;
+        display: none; /* Aseguramos que el botón hamburguesa esté oculto */
       }
+      
+      /* ELIMINAMOS .nav-links.nav-open por completo */
 
       .hero-grid {
         grid-template-columns: 1fr;
@@ -557,13 +577,8 @@
           <a href="nosotros.html">Nosotros</a>
           <a href="contacto.html" class="nav-cta">Contáctanos</a>
         </nav>
-
-        <button class="menu-toggle" aria-label="Abrir menú">
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
-      </div>
+        
+        </div>
     </div>
   </header>
 
@@ -677,17 +692,5 @@
     </div>
   </footer>
 
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const toggle = document.querySelector(".menu-toggle");
-      const nav = document.querySelector(".nav-links");
-      if (!toggle || !nav) return;
-
-      toggle.addEventListener("click", function () {
-        nav.classList.toggle("nav-open");
-      });
-    });
-  </script>
-
-</body>
+  </body>
 </html>
