@@ -51,6 +51,8 @@
     font-weight: 500;
     padding: 0.4rem 0.6rem;
     border-radius: 10px;
+    /* Nuevo: Asegura que los enlaces no se encojan en la barra scrollable */
+    flex-shrink: 0; 
   }
 
   .nav-links a:hover {
@@ -104,12 +106,6 @@
     grid-template-columns: 1fr 1fr;
     gap: 2rem;
     margin-top: 2rem;
-  }
-
-  @media (max-width: 900px) {
-    .info-grid {
-      grid-template-columns: 1fr;
-    }
   }
 
   /* MISSION/VISION CARDS */
@@ -212,16 +208,75 @@
   }
 }
 
+/* ============================
+   RESPONSIVE (MENÚ SCROLLABLE)
+   Incluye la nueva lógica de navegación móvil
+============================ */
+@media (max-width: 900px) {
+    .container {
+        padding: 0 1rem;
+    }
+
+    .nav {
+        /* Apila el logo y los links verticalmente */
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.6rem; 
+    }
+    
+    .nav img {
+        height: 40px; /* Hacemos el logo un poco más pequeño en móvil */
+    }
+
+    .nav-links {
+        /* Hacemos el menú scrollable horizontalmente */
+        width: 100%;
+        display: flex; 
+        overflow-x: auto; /* Permite el desplazamiento horizontal */
+        white-space: nowrap; /* Evita que los enlaces salten de línea */
+        -webkit-overflow-scrolling: touch; /* Mejora el rendimiento en iOS */
+        
+        padding-bottom: 0.5rem; /* Espacio para el scroll */
+        
+        /* Oculta la barra de desplazamiento en navegadores */
+        scrollbar-width: none;  /* Firefox */
+        -ms-overflow-style: none; /* IE and Edge */
+    }
+    
+    /* Regla para ocultar la barra de desplazamiento en Webkit (Chrome, Safari) */
+    .nav-links::-webkit-scrollbar {
+        display: none;
+    }
+    
+    .nav-links a {
+        margin-left: 0.5rem; /* Espacio entre los elementos */
+    }
+
+    .nav-links a:first-child {
+        margin-left: 0; /* Asegura que el primer elemento esté al borde izquierdo */
+    }
+    
+    .hero {
+        height: 250px; /* Altura más corta en móvil */
+    }
+    
+    .hero-title {
+        font-size: 1.8rem;
+    }
+
+    .info-grid {
+      grid-template-columns: 1fr;
+    }
+}
+
 </style>
 </head>
 
-<!-- BOTÓN FLOTANTE WHATSAPP -->
 <a class="whatsapp-float"
    href="https://wa.me/573012882282?text=Hola%20TRICOM%20ENERGY,%20quiero%20asesor%C3%ADa%20para%20un%20sistema%20solar."
    target="_blank"
    rel="noopener">
    
-  <!-- ícono whatsapp en SVG (no necesita archivos extra) -->
   <svg class="whatsapp-icon" viewBox="0 0 32 32" fill="none" aria-hidden="true">
     <path fill="white" d="M19.11 17.49c-.27-.14-1.6-.79-1.85-.88-.25-.09-.43-.14-.61.14-.18.27-.7.88-.86 1.06-.16.18-.32.2-.59.07-.27-.14-1.15-.42-2.19-1.35-.81-.72-1.36-1.61-1.52-1.88-.16-.27-.02-.41.12-.55.12-.12.27-.32.41-.48.14-.16.18-.27.27-.45.09-.18.05-.34-.02-.48-.07-.14-.61-1.47-.84-2.01-.22-.53-.45-.46-.61-.47h-.52c-.18 0-.48.07-.73.34-.25.27-.95.93-.95 2.27 0 1.34.98 2.64 1.12 2.82.14.18 1.93 2.95 4.68 4.13.65.28 1.15.45 1.54.57.65.21 1.24.18 1.7.11.52-.08 1.6-.65 1.83-1.28.23-.63.23-1.17.16-1.28-.07-.11-.25-.18-.52-.32z"/>
     <path fill="white" d="M26.67 5.33A13.24 13.24 0 0 0 16.01 1C8.83 1 3 6.82 3 13.99c0 2.22.58 4.39 1.68 6.3L3 31l10.9-1.67a12.93 12.93 0 0 0 6.11 1.56h.01c7.18 0 13-5.82 13-12.99 0-3.47-1.35-6.74-3.35-9.57zM20.01 28.6h-.01a10.8 10.8 0 0 1-5.52-1.53l-.39-.23-6.48.99 1.46-6.3-.25-.41a10.89 10.89 0 0 1-1.66-5.83C7.16 8.2 11.71 3.66 17.1 3.66c2.9 0 5.62 1.13 7.67 3.18a10.78 10.78 0 0 1 3.18 7.67c0 5.39-4.55 9.94-9.94 9.94z"/>
@@ -246,14 +301,12 @@
   </div>
 </header>
 
-<!-- HERO CON FOTO DEL EQUIPO -->
 <section class="hero">
   <div class="hero-title">Nuestro Equipo • TRICOM ENERGY</div>
 </section>
 
 <div class="container">
 
-  <!-- QUIENES SOMOS -->
   <h2 class="section-title">¿Quiénes somos?</h2>
   <p class="section-text">
     Somos una empresa del grupo <strong>TRICOM TELECOMUNICACIONES S.A.S</strong>,
@@ -262,7 +315,6 @@
     hogares, empresas e instituciones mediante soluciones limpias, eficientes y sostenibles.
   </p>
 
-  <!-- MISSION + VISION -->
   <div class="info-grid">
     <div class="card">
       <h3>Misión</h3>
@@ -281,7 +333,6 @@
     </div>
   </div>
 
-  <!-- VALUES -->
   <div class="values-box">
     <h2 class="section-title">Nuestros Valores</h2>
     <p class="section-text">Guiamos nuestro trabajo con principios firmes y un compromiso real con la calidad.</p>
@@ -302,4 +353,5 @@
 
 </body>
 </html>
+
 
