@@ -511,6 +511,118 @@
     display: none;
   }
 }
+/* ============================
+   MENÚ RESPONSIVE
+============================ */
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.35rem;
+  margin-left: 0.5rem;
+}
+
+.menu-toggle span {
+  display: block;
+  width: 21px;
+  height: 2px;
+  margin: 4px 0;
+  background: #111827;
+  border-radius: 999px;
+}
+
+/* Versión móvil */
+@media (max-width: 900px) {
+  .nav {
+    position: relative;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 100%;
+    right: 1.5rem;
+    left: 1.5rem;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 12px 25px rgba(0,0,0,0.12);
+    padding: 0.75rem 0.9rem;
+    display: none;            /* se mostrará solo con .nav-open */
+    flex-direction: column;
+    gap: 0.35rem;
+    margin-top: 0.4rem;
+    z-index: 20;
+  }
+
+  .nav-links a {
+    margin-left: 0;          /* quita el margen izquierdo en móvil */
+    display: block;
+  }
+
+  .nav-links.nav-open {
+    display: flex;
+  }
+
+  .menu-toggle {
+    display: inline-block;
+  }
+}
+
+/* MENÚ RESPONSIVE */
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.35rem;
+  margin-left: 0.5rem;
+}
+
+.menu-toggle span {
+  display: block;
+  width: 21px;
+  height: 2px;
+  margin: 4px 0;
+  background: #111827;
+  border-radius: 999px;
+}
+
+/* Versión móvil */
+@media (max-width: 900px) {
+  .nav {
+    position: relative;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 100%;
+    right: 1.5rem;
+    left: 1.5rem;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 12px 25px rgba(0,0,0,0.12);
+    padding: 0.75rem 0.9rem;
+    display: none;           /* OCULTA por defecto */
+    flex-direction: column;
+    gap: 0.35rem;
+    margin-top: 0.4rem;
+    z-index: 20;
+  }
+
+  .nav-links a {
+    margin-left: 0;
+    display: block;
+  }
+
+  .nav-links.nav-open {      /* ESTA ES LA CLAVE */
+    display: flex;
+  }
+
+  .menu-toggle {
+    display: inline-block;
+  }
+}
+
 
   </style>
 </head>
@@ -530,27 +642,69 @@
   <span class="whatsapp-text">WhatsApp</span>
 </a>
 
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const toggles = document.querySelectorAll(".menu-toggle");
+
+    toggles.forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        const header = btn.closest("header");
+        if (!header) return;
+        const navLinks = header.querySelector(".nav-links");
+        if (!navLinks) return;
+        navLinks.classList.toggle("nav-open");
+      });
+    });
+  });
+</script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const toggles = document.querySelectorAll(".menu-toggle");
+
+    toggles.forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        const header = btn.closest("header");
+        if (!header) return;
+        const navLinks = header.querySelector(".nav-links");
+        if (!navLinks) return;
+        navLinks.classList.toggle("nav-open");
+      });
+    });
+  });
+</script>
+
+
 <body>
 
   <!-- HEADER -->
-  <header>
-    <div class="container">
-      <div class="nav">
-        <div class="brand">
-          <img src="logo tricom energy.png" alt="TRICOM ENERGY" style="height:60px; object-fit:contain;">
-        </div>
+<header>
+  <div class="container">
+    <div class="nav">
+      <img src="logo tricom energy.png" style="height:60px;">
 
-        <nav class="nav-links">
-            <a href="index.html" style="color: var(--color-primary); font-weight: 600;">Inicio</a>
-            <a href="servicios.html">Servicios</a>
-            <a href="productos.html">Productos</a>
-            <a href="calculadora.html">Calculadora</a>
-            <a href="nosotros.html">Nosotros</a>
-            <a href="contacto.html" class="nav-cta">Contáctanos</a>
-        </nav>
-      </div>
+      <nav class="nav-links">
+        <a href="index.html" style="color: var(--color-primary); font-weight: 600;">Inicio</a>
+        <a href="servicios.html">Servicios</a>
+        <a href="productos.html">Productos</a>
+        <a href="calculadora.html">Calculadora</a>
+        <a href="nosotros.html">Nosotros</a>
+        <a href="contacto.html" class="nav-cta">Contáctanos</a>
+      </nav>
+
+      <!-- Botón hamburguesa -->
+      <button class="menu-toggle" aria-label="Abrir menú">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
     </div>
-  </header>
+  </div>
+</header>
+
+
+
 
   <main>
     <!-- HERO -->
@@ -753,3 +907,4 @@
 
 </body>
 </html>
+
